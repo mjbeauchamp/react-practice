@@ -1,35 +1,35 @@
-import { useState } from 'react'
+import { useState, createContext } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import AnimalList from './components/AnimalList/AnimalList'
+import AnimalForm from './components/AnimalForm/AnimalForm'
+import FavoriteAnimal from './components/FavoriteAnimal/FavoriteAnimal'
+
+const FavoriteAnimalContext = createContext();
 
 function App() {
   const [count, setCount] = useState(0)
+  const [greeting, setGreeting] = useState('')
+  const [animalList, setAnimalList] = useState([])
+  const [favoriteAnimal, setFavoriteAnimal] = useState('')
+
+  const sayHi = (e: any, greeting = 'Hi!') => {
+    console.log(greeting)
+    setGreeting(greeting)
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <FavoriteAnimalContext.Provider value={{setFavoriteAnimal, favoriteAnimal}}>
+        <FavoriteAnimal />
+        <AnimalForm setAnimalList={setAnimalList} />
+        <AnimalList animalList={animalList} />
+      </FavoriteAnimalContext.Provider>
     </>
   )
 }
 
 export default App
+
+export {FavoriteAnimalContext}
