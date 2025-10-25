@@ -5,6 +5,7 @@ import './App.css'
 import AnimalList from './components/AnimalList/AnimalList'
 import AnimalForm from './components/AnimalForm/AnimalForm'
 import FavoriteAnimal from './components/FavoriteAnimal/FavoriteAnimal'
+import StarWars from './components/StarWars/StarWars'
 
 const FavoriteAnimalContext = createContext();
 
@@ -21,11 +22,12 @@ function App() {
 
   return (
     <>
-      <FavoriteAnimalContext.Provider value={{setFavoriteAnimal, favoriteAnimal}}>
+      <StarWars />
+      {/* <FavoriteAnimalContext.Provider value={{setFavoriteAnimal, favoriteAnimal}}>
         <FavoriteAnimal />
         <AnimalForm setAnimalList={setAnimalList} />
         <AnimalList animalList={animalList} />
-      </FavoriteAnimalContext.Provider>
+      </FavoriteAnimalContext.Provider> */}
     </>
   )
 }

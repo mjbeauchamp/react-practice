@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './AnimalList.module.css'
 
 export default function AnimalList (props: any) {
-    const [selectedIndexes, setSelectedIndexes] = React.useState<Array<number>>([])
+    const [selectedIndexes, setSelectedIndexes] = React.useState<Array<number>>([]);
 
 
     const displayedAnimals = props.animalList.map((animal: string, index: number) => {
